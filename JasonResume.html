@@ -1,173 +1,161 @@
 <html>
-   <head>
-<title>Creating Object JSON with JavaScript</title>
-<style>
+	<head>
+		<title>Creating Object JSON with JavaScript</title>
+		<style>
 
 
-body, table { 
-    margin-top: 1cm; 
-    margin-bottom: 1cm;
-    font-size: 8pt;
-    background-color: white;
-    font-family: Arial, Verdana, sans-serif;
-}
+			body, table { 
+				margin-top: 1cm; 
+				margin-bottom: 1cm;
+				font-size: 8pt;
+				background-color: white;
+				font-family: Arial, Verdana, sans-serif;
+			}
 
-.resume { 
-    padding-left: 1.5cm;
-    padding-right: 1.5cm;
-}
-.work {
-	font-family: Arial;
-	font-size: 12pt;
-    color: black;
-	width:100%;
-	float:left;
+			.resume { 
+				padding-left: 1.5cm;
+				padding-right: 1.5cm;
+			}
+			.work {
+				font-family: Arial;
+				font-size: 12pt;
+				color: black;
+				width:100%;
+				float:left;
+				
+			}
+			.company{
+				color: #606d76;
+				font-size: 10pt;
+			}
+			.role{
+				font-size: 10pt;
+			}
+			.content{
+				font-size: 10pt;
+			}
+
+
+			.summary {
+				font-family: Arial;
+				font-size: 14pt;
+				text-align: justify;
+				color: black;
+				width:75%;
+				float:left;
+			   
+			}
+			.personalimg {
+				font-family: Arial;
+				color: black;
+				width:25%;
+				float:right;
+				
+			}
+			h2 {
+				
+				font-family: sans-serif;
+				color: black;
+				border-bottom: solid 1pt black;
+				font-size: 200%;
+			}
+			p {
+				margin-bottom: 0.05cm;
+				margin-top: 0.15cm;
+			}
+			em { font-weight: bold; }
+			ul { margin-top: 0.1cm; }
+
+			
+			.headerBlock { text-align: left }
+			.jobTitle { font-weight: bold }
+			
+
+			.nameHeading { font-family: sans-serif; font-style: italic ;font-size: 300%; }
+			.header { font-family: sans-serif; font-size: 125%; }
+
+			
+			
+
+		</style>
     
-}
-.company{
-	color: #606d76;
-	font-size: 10pt;
-}
-.role{
-	font-size: 10pt;
-}
-.content{
-	font-size: 10pt;
-}
-
-
-.summary {
-	font-family: Arial;
-	font-size: 14pt;
-	text-align: justify;
-    color: black;
-	width:75%;
-	float:left;
-   
-}
-.personalimg {
-	font-family: Arial;
-    color: black;
-	width:25%;
-	float:right;
-    
-}
-h2 {
-    
-    font-family: sans-serif;
-    color: black;
-    border-bottom: solid 1pt black;
-    font-size: 200%;
-}
-p {
-    margin-bottom: 0.05cm;
-    margin-top: 0.15cm;
-}
-em { font-weight: bold; }
-ul { margin-top: 0.1cm; }
-
-.projects p { font-style: italic }
-ul.degrees { padding-left: 0.2cm; }
-.subjectsHeading { font-style: italic }
-.awardTitle { font-weight: bold }
-.bookTitle { font-style: italic }
-.citation { font-style: italic }
-.copyright { font-size: 75% }
-li.degree { margin-bottom: 0.2cm; }
-.degreeTitle { font-weight: bold }
-.employer { font-style: italic }
-.headerBlock { text-align: left }
-.jobTitle { font-weight: bold }
-.lastModified { font-size: 75% }
-
-.nameHeading { font-family: sans-serif; font-style: italic ;font-size: 300%; }
-.header { font-family: sans-serif; font-size: 125%; }
-
-div.referee { margin-bottom: 0.5cm; }
-table.referees { width: 60%; margin-top: 0cm; margin-bottom: 0cm;}
-.refereeName { font-weight: bold }
-.skillsetTitle { font-weight: bold }
-.urlA { font-family:sans-serif; color:red; }
-
-</style>
-    
-<script language = "javascript">
-  var JSONobj = {"basics": {
-    "name": "Manju Hariharan",
-    "label": "Web Developer",
-    "picture": "",
-    "email": "manju@slicestoshare.com",
-    "phone": "(016) 601-9840",
-    "website": "http://wwww.slicestoshare.com/about",
-    "summary":"I am a versatile freelance IT professional; webmaster, software developer, creative website designer, an ERP(Openbravo) consultant with 10 years of experience in the IT industry with wide skill sets. Producing and managing multiple websites has helped me gain a great wealth of knowledge related to online marketing, search engine optimization (SEO) techniques, social media strategies, website optimization and so on.",
-    "location": {
-      "address": "10 H Villamas Condo, Sungai Buloh, Kuala Lumpur 47000, Malaysia",
-     
-     
-    },
-	"education":" Bachelor Of Engineering(EEE) - Regional Engineering College - 1988-1992",
-    "work": [
-      {
-	    "briefContent": "I worked in  an Online Stock Trading Application project, being carried out by Rakuten Trade Sdn Bhd, funded by Kenanga (Investment Bank Malaysia) and Rakuten (Japan).",
-        "jobTitle": "Senior BI Developer",
-        "company": "Buzznet Sdn Bhd",
-        "roles": [
-		
-		{ "role1":"Design",
-		  "role2":"Develop Jasper Reports"
-		 }
-		
-		]
-	
-	},
-	{
-	    "briefContent": "In my work with Acubiz Consulting Sdn. Bhd., apart from website design, I have to carry out a variety of webmaster functions.",
-        "jobTitle": "Software Consultant",
-        "company": "AcuBiz Consulting Sdn Bhd",
-        "roles": [
-		
-		{ "role1":"Website Design",
-		  "role2":"Social Media Marketing Jasper Reports"
-		 }
-		
-		]
-	
-	}
-	]
-  }
-}  
-	document.write("<div class='resume'><div class='headerBlock'><h1 class='nameHeading'>"+JSONobj.basics.name+"</h1>");
-	document.write("<h2 class='jobTitle'>"+JSONobj.basics.label);
-	document.write(JSONobj.basics.location.address);
-	document.write("<p>Email: <a href='mailto:mbenson@apache.org'>"+JSONobj.basics.email+"</a></p>	");
-	document.write("<p>Phone:" +JSONobj.basics.phone+"</p>");
-	document.write("<p>Website: <a href='" +JSONobj.basics.website+"'>"+"SlicesToShare"+"</a></p>");
-	document.write("</h2></div>");
-	document.write("<div class='summary'>"+JSONobj.basics.summary+"</div>");
-	document.write("<div class='personalimg'><img src='' alt='Manju Hariharan'/></div>");
-	document.write("<br><div class='work'><h2 class='header'>"+"Work Experience"+"</h2>");
-	 for(i = 0;i<JSONobj.basics.work.length;i++){
-		document.write("<br>"+JSONobj.basics.work[i].jobTitle+"");
-		
-		document.write("<br><span class='company'>"+JSONobj.basics.work[i].company+"</span><br>");
-		document.write("<br><span class='content'>"+JSONobj.basics.work[i].briefContent+"</span><br>");
-		document.write("<br><span class='content'>"+"Responsibilites:"+"</span>");
-		for(j = 0;j<JSONobj.basics.work[i].roles.length;j++){
-		
-		document.write("<ul class='role'><li>"+JSONobj.basics.work[i].roles[j].role1+"</li>");
-		document.write("<li>"+JSONobj.basics.work[i].roles[j].role2+"</li></ul>");
-		
-		}
-	 }
-	document.write("</div>"); 
-	document.write("<br><div class='work'><h2 class='header'>"+"Education"+"</h2>");
-	document.write("<span class='content'>"+JSONobj.basics.education+"</span><br>");
-	document.write("<br>"+"   "+"</div></div>");
-	
-	
-         
-</script>
-</head>
+		<script language = "javascript">
+		  var JSONobj = {"basics": {
+			"name": "Manju Hariharan",
+			"label": "Web Developer",
+			"picture": "",
+			"email": "manju@slicestoshare.com",
+			"phone": "(016) 601-9840",
+			"website": "http://wwww.slicestoshare.com/about",
+			"summary":"I am a versatile freelance IT professional; webmaster, software developer, creative website designer, an ERP(Openbravo) consultant with 10 years of experience in the IT industry with wide skill sets. Producing and managing multiple websites has helped me gain a great wealth of knowledge related to online marketing, search engine optimization (SEO) techniques, social media strategies, website optimization and so on.",
+			"location": {
+			  "address": "10 H Villamas Condo, Sungai Buloh, Kuala Lumpur 47000, Malaysia",
+			 
+			 
+			},
+			"education":" Bachelor Of Engineering(EEE) - Regional Engineering College - 1988-1992",
+			"work": [
+			  {
+				"briefContent": "I worked in  an Online Stock Trading Application project, being carried out by Rakuten Trade Sdn Bhd, funded by Kenanga (Investment Bank Malaysia) and Rakuten (Japan).",
+				"jobTitle": "Senior BI Developer",
+				"company": "Buzznet Sdn Bhd",
+				"roles": [
+				
+				{ "role1":"Design",
+				  "role2":"Develop Jasper Reports"
+				 }
+				
+				]
+			
+			},
+			{
+				"briefContent": "In my work with Acubiz Consulting Sdn. Bhd., apart from website design, I have to carry out a variety of webmaster functions.",
+				"jobTitle": "Software Consultant",
+				"company": "AcuBiz Consulting Sdn Bhd",
+				"roles": [
+				
+				{ "role1":"Website Design",
+				  "role2":"Social Media Marketing Jasper Reports"
+				 }
+				
+				]
+			
+			}
+			]
+		  }
+		}  
+			document.write("<div class='resume'><div class='headerBlock'><h1 class='nameHeading'>"+JSONobj.basics.name+"</h1>");
+			document.write("<h2 class='jobTitle'>"+JSONobj.basics.label);
+			document.write(JSONobj.basics.location.address);
+			document.write("<p>Email: <a href='mailto:mbenson@apache.org'>"+JSONobj.basics.email+"</a></p>	");
+			document.write("<p>Phone:" +JSONobj.basics.phone+"</p>");
+			document.write("<p>Website: <a href='" +JSONobj.basics.website+"'>"+"SlicesToShare"+"</a></p>");
+			document.write("</h2></div>");
+			document.write("<div class='summary'>"+JSONobj.basics.summary+"</div>");
+			document.write("<div class='personalimg'><img src='' alt='Manju Hariharan'/></div>");
+			document.write("<br><div class='work'><h2 class='header'>"+"Work Experience"+"</h2>");
+			 for(i = 0;i<JSONobj.basics.work.length;i++){
+				document.write("<br>"+JSONobj.basics.work[i].jobTitle+"");
+				
+				document.write("<br><span class='company'>"+JSONobj.basics.work[i].company+"</span><br>");
+				document.write("<br><span class='content'>"+JSONobj.basics.work[i].briefContent+"</span><br>");
+				document.write("<br><span class='content'>"+"Responsibilites:"+"</span>");
+				for(j = 0;j<JSONobj.basics.work[i].roles.length;j++){
+				
+				document.write("<ul class='role'><li>"+JSONobj.basics.work[i].roles[j].role1+"</li>");
+				document.write("<li>"+JSONobj.basics.work[i].roles[j].role2+"</li></ul>");
+				
+				}
+			 }
+			document.write("</div>"); 
+			document.write("<br><div class='work'><h2 class='header'>"+"Education"+"</h2>");
+			document.write("<span class='content'>"+JSONobj.basics.education+"</span><br>");
+			document.write("<br>"+"   "+"</div></div>");
+			
+			
+				 
+		</script>
+	</head>
 <body>
 </body>
-   </html>
+</html>
