@@ -1,0 +1,1131 @@
+<html>
+	<head>
+		<title> JavaScript Tic-Tac-Toe</title>
+<SCRIPT>
+
+
+
+//if IE4/NS6, apply style
+if (document.all||document.getElementById){
+document.write('<style>.tictac{')
+document.write('width:100px;height:100px;')
+document.write('}</style>')
+}
+
+var sqr1;
+var sqr2;
+var sqr3;
+var sqr4;
+var sqr5;
+var sqr6;
+var sqr7;
+var sqr8;
+var sqr9;
+var sqr10;
+var sqr11;
+var sqr12;
+var sqr13;
+var sqr14;
+var sqr15;
+var sqr16;
+var sqr1T = 0;
+var sqr2T = 0;
+var sqr3T = 0;
+var sqr4T = 0;
+var sqr5T = 0;
+var sqr6T = 0;
+var sqr7T = 0;
+var sqr8T = 0;
+var sqr9T = 0;
+var sqr10T = 0;
+var sqr11T = 0;
+var sqr12T = 0;
+var sqr13T = 0;
+var sqr14T = 0;
+var sqr15T = 0;
+var sqr16T = 0;
+
+var moveCount = 0;
+var turn = 0;
+var mode = 1;
+const BLANK_VAL = "     ";
+const PLAYER_VAL = " X ";
+const COMPUTER_VAL = " O ";
+var p_movecount = 0;
+var gameOver = false;
+
+function AssignValuesToVariables()
+{
+	console.log("entering AssignValuesToVariables");
+	sqr1 = document.tic.sqr1.value;
+	sqr2 = document.tic.sqr2.value;
+	sqr3 = document.tic.sqr3.value;
+	sqr4 = document.tic.sqr4.value;
+	sqr5 = document.tic.sqr5.value;
+	sqr6 = document.tic.sqr6.value;
+	sqr7 = document.tic.sqr7.value;
+	sqr8 = document.tic.sqr8.value;
+	sqr9 = document.tic.sqr9.value;
+	sqr10 = document.tic.sqr10.value;
+	sqr11 = document.tic.sqr11.value;
+	sqr12 = document.tic.sqr12.value;
+	sqr13 = document.tic.sqr13.value;
+	sqr14 = document.tic.sqr14.value;
+	sqr15 = document.tic.sqr15.value;
+	sqr16 = document.tic.sqr16.value;
+}
+
+function DisableAllButtons()
+{
+  document.tic.sqr1.disabled  = true;
+  document.tic.sqr2.disabled  = true;
+  document.tic.sqr3.disabled  = true;
+  document.tic.sqr4.disabled  = true;
+  document.tic.sqr5.disabled  = true;
+  document.tic.sqr6.disabled  = true;
+  document.tic.sqr7.disabled  = true;
+  document.tic.sqr8.disabled  = true;
+  document.tic.sqr9.disabled  = true;
+  document.tic.sqr10.disabled = true;
+  document.tic.sqr11.disabled = true;
+  document.tic.sqr12.disabled = true;
+  document.tic.sqr13.disabled = true;
+  document.tic.sqr14.disabled = true;
+  document.tic.sqr15.disabled = true;
+  document.tic.sqr16.disabled = true;
+}
+function ComputerWinCheck()
+{
+	console.log("entering ComputerWinCheck");
+	console.log(computer_moved,sqr5,sqr6,sqr8,sqr7T,sqr8T,turn);
+	if(sqr1 == COMPUTER_VAL && sqr2 == COMPUTER_VAL && sqr3 == COMPUTER_VAL && sqr4T == 0 && turn == 1)
+	  {
+		elementName="sqr4";
+		sqr4T = 1;
+	  }
+	  else if(sqr2 == COMPUTER_VAL && sqr3 == COMPUTER_VAL && sqr4 == COMPUTER_VAL && sqr1T == 0 && turn == 1)
+	  {
+		
+		elementName="sqr1";
+		sqr1T = 1;
+	  }
+	  else if(sqr1 == COMPUTER_VAL && sqr2 == COMPUTER_VAL && sqr4 == COMPUTER_VAL && sqr3T == 0 && turn == 1)
+	  {
+	   
+		elementName="sqr3";
+		sqr3T = 1;
+	  }
+	  else if(sqr3 == COMPUTER_VAL && sqr4 == COMPUTER_VAL && sqr1 == COMPUTER_VAL && sqr2T == 0 && turn == 1)
+	  {
+		
+		elementName="sqr2";
+		sqr2T = 1;
+	  }
+	  else if(sqr5 == COMPUTER_VAL && sqr6 == COMPUTER_VAL && sqr7 == COMPUTER_VAL && sqr8T == 0 && turn == 1)
+	  {
+		//document.tic.sqr8.value = COMPUTER_VAL;
+		
+		elementName="sqr8";
+		sqr8T = 1;
+	  }
+	  else if(sqr5 == COMPUTER_VAL && sqr6 == COMPUTER_VAL && sqr8 == COMPUTER_VAL && sqr7T == 0 && turn == 1)
+	  {
+		console.log("entering condition ",computer_moved);
+		//document.tic.sqr7.value = COMPUTER_VAL;
+		elementName="sqr7";
+		sqr7T = 1;
+	  }
+	 else if(sqr5 == COMPUTER_VAL && sqr7 == COMPUTER_VAL && sqr8 == COMPUTER_VAL && sqr6T == 0 && turn == 1)
+	  {
+		//document.tic.sqr6.value = COMPUTER_VAL;
+		elementName="sqr6";
+		sqr6T = 1;
+	  }
+	  else if(sqr6 == COMPUTER_VAL && sqr7 == COMPUTER_VAL && sqr8 == COMPUTER_VAL && sqr5T == 0 && turn == 1)
+	  {
+		//document.tic.sqr5.value = COMPUTER_VAL;
+		elementName="sqr5";
+		sqr5T = 1;
+	  }
+	  else if(sqr9== COMPUTER_VAL && sqr10 == COMPUTER_VAL && sqr11== COMPUTER_VAL && sqr12T == 0 && turn == 1)
+	  {
+		//document.tic.sqr12.value = COMPUTER_VAL;
+		elementName="sqr12";
+		sqr12T = 1;
+	  }
+	  else if(sqr9 == COMPUTER_VAL && sqr10 == COMPUTER_VAL && sqr12 == COMPUTER_VAL && sqr11T == 0 && turn == 1)
+	  {
+		//document.tic.sqr11.value = COMPUTER_VAL;
+		elementName="sqr11";
+		sqr11T = 1;
+	  }
+	  else if(sqr9 == COMPUTER_VAL && sqr11 == COMPUTER_VAL && sqr12 == COMPUTER_VAL && sqr10T == 0 && turn == 1)
+	  {
+		//document.tic.sqr10.value = COMPUTER_VAL;
+		elementName="sqr10";
+		sqr10T = 1;
+	  }
+	  else if(sqr10 == COMPUTER_VAL && sqr11 == COMPUTER_VAL && sqr12 == COMPUTER_VAL && sqr9T == 0 && turn == 1)
+	  {
+		///document.tic.sqr9.value = COMPUTER_VAL;
+		elementName="sqr9";
+		sqr9T = 1;
+	  }
+	  else if(sqr13 == COMPUTER_VAL && sqr14 == COMPUTER_VAL && sqr15 == COMPUTER_VAL && sqr16T == 0 && turn == 1)
+	  {
+		//document.tic.sqr16.value = COMPUTER_VAL;
+		elementName="sqr16";
+		sqr16T = 1;
+	  }
+	  else if(sqr13 == COMPUTER_VAL && sqr14 == COMPUTER_VAL && sqr16 == COMPUTER_VAL && sqr15T == 0 && turn == 1)
+	  {
+		//document.tic.sqr15.value = COMPUTER_VAL;
+		elementName="sqr15";
+		sqr15T = 1;
+	  }
+	  else if(sqr13 == COMPUTER_VAL && sqr15 == COMPUTER_VAL && sqr16 == COMPUTER_VAL && sqr14T == 0 && turn == 1)
+	  {
+		//document.tic.sqr14.value = COMPUTER_VAL;
+		elementName="sqr14";
+		sqr14T = 1;
+	  }
+	  else if(sqr14 == COMPUTER_VAL && sqr15 == COMPUTER_VAL && sqr16 == COMPUTER_VAL && sqr13T == 0 && turn == 1)
+	  {
+		//document.tic.sqr13.value = COMPUTER_VAL;
+		elementName="sqr13";
+		sqr13T = 1;
+	  }
+	  else if(sqr1 == COMPUTER_VAL && sqr6 == COMPUTER_VAL && sqr11 == COMPUTER_VAL && sqr16T == 0 && turn == 1)
+	  {
+		//document.tic.sqr16.value = COMPUTER_VAL;
+		elementName="sqr16";
+		sqr16T = 1;
+	  }
+	  else if(sqr1 == COMPUTER_VAL && sqr6 == COMPUTER_VAL && sqr16 == COMPUTER_VAL && sqr11T == 0 && turn == 1)
+	  {
+		//document.tic.sqr11.value = COMPUTER_VAL;
+		elementName="sqr11";
+		sqr11T = 1;
+	  }
+	  else if(sqr1 == COMPUTER_VAL && sqr16 == COMPUTER_VAL && sqr11 == COMPUTER_VAL && sqr6T == 0 && turn == 1)
+	  {
+		//document.tic.sqr6.value = COMPUTER_VAL;
+		elementName="sqr6";
+		sqr6T = 1;
+	  }
+	  else if(sqr16 == COMPUTER_VAL && sqr6 == COMPUTER_VAL && sqr11 == COMPUTER_VAL && sqr1T == 0 && turn == 1)
+	  {
+		//document.tic.sqr1.value = COMPUTER_VAL;
+		elementName="sqr1";
+		sqr1T = 1;
+	  }
+	  else if(sqr4 == COMPUTER_VAL && sqr7 == COMPUTER_VAL && sqr10 == COMPUTER_VAL && sqr13T == 0 && turn == 1)
+	  {
+		//document.tic.sqr13.value = COMPUTER_VAL;
+		elementName="sqr13";
+		sqr13T = 1;
+	  }
+	  else if(sqr7 == COMPUTER_VAL && sqr10 == COMPUTER_VAL && sqr13 == COMPUTER_VAL && sqr4T == 0 && turn == 1)
+	  {
+		//document.tic.sqr4.value = COMPUTER_VAL;
+		elementName="sqr4";
+		sqr4T = 1;
+	  }
+	  else if(sqr10 == COMPUTER_VAL && sqr13 == COMPUTER_VAL && sqr4 == COMPUTER_VAL && sqr7T == 0 && turn == 1)
+	  {
+		//document.tic.sqr7.value = COMPUTER_VAL;
+		elementName="sqr7";
+		sqr7T = 1;
+	  }
+	  else if(sqr7 == COMPUTER_VAL && sqr13 == COMPUTER_VAL && sqr4 == COMPUTER_VAL && sqr10T == 0 && turn == 1)
+	  {
+		//document.tic.sqr10.value = COMPUTER_VAL
+		elementName="sqr10";
+		sqr10T = 1;
+	  }
+	  else if(sqr1 == COMPUTER_VAL && sqr5 == COMPUTER_VAL && sqr9 == COMPUTER_VAL && sqr13T == 0 && turn == 1)
+	  {
+		//document.tic.sqr13.value = COMPUTER_VAL;
+		elementName="sqr13";
+		sqr13T = 1;
+	  }
+	  else if(sqr5 == COMPUTER_VAL && sqr9 == COMPUTER_VAL && sqr13 == COMPUTER_VAL && sqr1T == 0 && turn == 1)
+	  {
+		//document.tic.sqr1.value = COMPUTER_VAL;
+		elementName="sqr1";
+		sqr1T = 1;
+	  }
+	  else if(sqr9 == COMPUTER_VAL && sqr13 == COMPUTER_VAL && sqr1 == COMPUTER_VAL && sqr5T == 0 && turn == 1)
+	  {
+		//document.tic.sqr5.value = COMPUTER_VAL;
+		elementName="sqr5";
+		sqr5T = 1;
+	  }
+	  else if(sqr13 == COMPUTER_VAL && sqr1 == COMPUTER_VAL && sqr5 == COMPUTER_VAL && sqr9T == 0 && turn == 1)
+	  {
+		//document.tic.sqr9.value = COMPUTER_VAL;
+		elementName="sqr9";
+		sqr9T = 1;
+	  }
+	  else if(sqr2 == COMPUTER_VAL && sqr6== COMPUTER_VAL && sqr10 == COMPUTER_VAL && sqr14T == 0 && turn == 1)
+	  {
+		//document.tic.sqr14.value = COMPUTER_VAL;
+		elementName="sqr14";
+		sqr14T = 1;
+	  }
+	  else if(sqr6 == COMPUTER_VAL && sqr10== COMPUTER_VAL && sqr14 == COMPUTER_VAL && sqr2T == 0 && turn == 1)
+	  {
+		//document.tic.sqr2.value = COMPUTER_VAL;
+		elementName="sqr2";
+		sqr2T = 1;
+	  }
+	  else if(sqr10 == COMPUTER_VAL && sqr14== COMPUTER_VAL && sqr2 == COMPUTER_VAL && sqr6T == 0 && turn == 1)
+	  {
+		//document.tic.sqr6.value = COMPUTER_VAL
+		elementName="sqr6";
+		sqr6T = 1;
+	  }
+	  else if(sqr14 == COMPUTER_VAL && sqr2== COMPUTER_VAL && sqr6 == COMPUTER_VAL && sqr10T == 0 && turn == 1)
+	  {
+		//document.tic.sqr10.value = COMPUTER_VAL;
+		elementName="sqr10";
+		sqr10T = 1;
+	  }
+	  else if(sqr3 == COMPUTER_VAL && sqr7== COMPUTER_VAL && sqr11== COMPUTER_VAL && sqr15T == 0 && turn == 1)
+	  {
+		//document.tic.sqr15.value = COMPUTER_VAL;
+		elementName="sqr15";
+		sqr15T = 1;
+	  }
+	  else if(sqr7 == COMPUTER_VAL && sqr11== COMPUTER_VAL && sqr15== COMPUTER_VAL && sqr3T == 0 && turn == 1)
+	  {
+		//document.tic.sqr3.value = COMPUTER_VAL;
+		elementName="sqr3";
+		sqr3T = 1;
+	  }
+	  else if(sqr11 == COMPUTER_VAL && sqr15== COMPUTER_VAL && sqr3== COMPUTER_VAL && sqr7T == 0 && turn == 1)
+	  {
+		//document.tic.sqr7.value = COMPUTER_VAL;
+		elementName="sqr7";
+		sqr7T = 1;
+	  }
+	  else if(sqr15 == COMPUTER_VAL && sqr3== COMPUTER_VAL && sqr7== COMPUTER_VAL && sqr11T == 0 && turn == 1)
+	  {
+		//document.tic.sqr11.value = COMPUTER_VAL;
+		elementName="sqr11";
+		sqr11T = 1;
+	  }
+	  else if(sqr4 == COMPUTER_VAL && sqr8== COMPUTER_VAL && sqr12== COMPUTER_VAL && sqr16T == 0 && turn == 1)
+	  {
+		//document.tic.sqr16.value = COMPUTER_VAL;
+		elementName="sqr16";
+		sqr16T = 1;
+	  } 
+	  else if(sqr8 == COMPUTER_VAL && sqr12== COMPUTER_VAL && sqr16== COMPUTER_VAL && sqr4T == 0 && turn == 1)
+	  {
+		//document.tic.sqr4.value = COMPUTER_VAL;
+		elementName="sqr4";
+		sqr4T = 1;
+	  }
+	  else if(sqr12 == COMPUTER_VAL && sqr16== COMPUTER_VAL && sqr4== COMPUTER_VAL && sqr8T == 0 && turn == 1)
+	  {
+		//document.tic.sqr8.value = COMPUTER_VAL;
+		elementName="sqr8";
+		sqr8T = 1;
+	  }
+	  else if(sqr16 == COMPUTER_VAL && sqr4== COMPUTER_VAL && sqr8== COMPUTER_VAL && sqr12T == 0 && turn == 1)
+	  {
+		//document.tic.sqr12.value = COMPUTER_VAL;
+		elementName="sqr12";
+		sqr12T = 1;
+	  }
+	  else
+	  {
+		
+		computer_moved = false;
+		console.log("else ",computer_moved);
+	  }
+  
+	  if (computer_moved)
+	  {
+		document.getElementById(elementName).value = COMPUTER_VAL;
+		document.getElementById(elementName).disabled = true;
+		turn = 0;
+		AssignValuesToVariables();
+	  }
+	  //PlayerLoseCheck();
+	  console.log("just before return ",computer_moved);
+	  return computer_moved;
+
+}
+
+function DidAnyoneWin(targetVal)
+{
+  console.log("entering DidAnyoneWin checking for [" + targetVal + "] ");
+  bwon = false;
+  if(sqr1 == targetVal && sqr2 == targetVal && sqr3 == targetVal && sqr4 == targetVal)
+  {
+	document.getElementById("sqr1").style.background="yellow";
+	document.getElementById("sqr2").style.background="yellow";
+	document.getElementById("sqr3").style.background="yellow";
+	document.getElementById("sqr4").style.background="yellow";
+	bwon = true;
+  } 
+  else if(sqr5 == targetVal && sqr6 == targetVal && sqr7 == targetVal && sqr8 == targetVal )
+  {
+	document.getElementById("sqr5").style.background="yellow";
+	document.getElementById("sqr6").style.background="yellow";
+	document.getElementById("sqr7").style.background="yellow";
+	document.getElementById("sqr8").style.background="yellow";
+	bwon = true;
+  } 
+  else if(sqr9 == targetVal && sqr10 == targetVal && sqr11 == targetVal && sqr12 == targetVal)
+  {
+	document.getElementById("sqr9").style.background="yellow";
+	document.getElementById("sqr10").style.background="yellow";
+	document.getElementById("sqr11").style.background="yellow";
+	document.getElementById("sqr12").style.background="yellow";
+	bwon = true;
+  }
+  else if(sqr13 == targetVal && sqr14 == targetVal && sqr15 == targetVal && sqr16 == targetVal)
+  {
+	document.getElementById("sqr13").style.background="yellow";
+	document.getElementById("sqr14").style.background="yellow";
+	document.getElementById("sqr15").style.background="yellow";
+	document.getElementById("sqr16").style.background="yellow";
+	bwon = true;
+  }
+  else if(sqr1 == targetVal && sqr6 == targetVal && sqr11 == targetVal && sqr16 == targetVal)
+  {
+	document.getElementById("sqr1").style.background="yellow";
+	document.getElementById("sqr6").style.background="yellow";
+	document.getElementById("sqr11").style.background="yellow";
+	document.getElementById("sqr16").style.background="yellow";
+	//diagonol
+	bwon = true;
+  }
+  else if(sqr1 == targetVal && sqr5 == targetVal && sqr9 == targetVal && sqr13 == targetVal)
+  {
+	document.getElementById("sqr1").style.background="yellow";
+	document.getElementById("sqr5").style.background="yellow";
+	document.getElementById("sqr9").style.background="yellow";
+	document.getElementById("sqr13").style.background="yellow";
+	bwon = true;
+  }
+  else if(sqr2 == targetVal && sqr6 == targetVal && sqr10 == targetVal && sqr14 == targetVal)
+  {
+	document.getElementById("sqr2").style.background="yellow";
+	document.getElementById("sqr6").style.background="yellow";
+	document.getElementById("sqr10").style.background="yellow";
+	document.getElementById("sqr14").style.background="yellow";
+	bwon = true;
+  }
+  else if(sqr3 == targetVal && sqr7 == targetVal && sqr11 == targetVal && sqr15 == targetVal)
+  {
+	document.getElementById("sqr3").style.background="yellow";
+	document.getElementById("sqr7").style.background="yellow";
+	document.getElementById("sqr11").style.background="yellow";
+	document.getElementById("sqr15").style.background="yellow";
+	bwon = true;
+  }
+  else if(sqr4 == targetVal && sqr8 == targetVal && sqr12 == targetVal && sqr16 == targetVal)
+  {
+	document.getElementById("sqr4").style.background="yellow";
+	document.getElementById("sqr8").style.background="yellow";
+	document.getElementById("sqr12").style.background="yellow";
+	document.getElementById("sqr16").style.background="yellow";
+	bwon = true;
+  }
+  else if(sqr1 == targetVal && sqr6 == targetVal && sqr11 == targetVal && sqr16 == targetVal)
+  {
+	document.getElementById("sqr1").style.background="yellow";
+	document.getElementById("sqr6").style.background="yellow";
+	document.getElementById("sqr11").style.background="yellow";
+	document.getElementById("sqr16").style.background="yellow";
+	bwon = true;
+  }
+  else if(sqr4 == targetVal && sqr7 == targetVal && sqr10 == targetVal && sqr13 == targetVal)
+  {
+	// diagonol
+	document.getElementById("sqr4").style.background="yellow";
+	document.getElementById("sqr7").style.background="yellow";
+	document.getElementById("sqr10").style.background="yellow";
+	document.getElementById("sqr13").style.background="yellow";
+	bwon = true;
+  } 
+  if (bwon)
+  {
+	 DisableAllButtons();	
+  }
+  gameOver = bwon;
+  return bwon;
+}
+
+function OnClickCheck(element)
+{
+	//console.log(element.name);
+	console.log("entering OnClickCheck")
+	//alert(element.style.background);	
+	
+	element.disabled = true;
+	p_movecount++;
+	
+	if (turn == 1)
+	{
+		alert("turn = 1 - something wrong....");
+		return;
+	}
+	
+	if (p_movecount > 8)
+	{
+		alert("Draw...");
+		return;
+	}
+	
+	if(element.value == BLANK_VAL && turn == 0 && p_movecount <= 8) 
+	{
+		element.value = PLAYER_VAL; 
+		turn = 1;
+		AssignValuesToVariables(); 
+		
+		if (element.name == "sqr1") sqr1T = 1;
+		if (element.name == "sqr2") sqr2T = 1;
+		if (element.name == "sqr3") sqr3T = 1;
+		if (element.name == "sqr4") sqr4T = 1;
+		if (element.name == "sqr5") sqr5T = 1;
+		if (element.name == "sqr6") sqr6T = 1;
+		if (element.name == "sqr7") sqr7T = 1;
+		if (element.name == "sqr8") sqr8T = 1;
+		if (element.name == "sqr9") sqr9T = 1;
+		if (element.name == "sqr10") sqr10T = 1;
+		if (element.name == "sqr11") sqr11T = 1;
+		if (element.name == "sqr12") sqr12T = 1;
+		if (element.name == "sqr13") sqr13T = 1;
+		if (element.name == "sqr14") sqr14T = 1;
+		if (element.name == "sqr15") sqr15T = 1;
+		if (element.name == "sqr16") sqr16T = 1;
+
+		if (DidAnyoneWin(PLAYER_VAL) )
+		{	
+			setTimeout(function() {
+				alert("You won!");
+				}, 500);		
+			return;
+		} else {
+			DoComputerMove();
+		}
+	} 
+	
+	if (!gameOver && p_movecount == 8)
+	{
+		setTimeout(function() {
+			alert("Draw!");
+		}, 500);	
+		return;
+	}
+	
+}
+
+function DoComputerMove()
+{
+	computer_moved = true;
+	if(!ComputerWinCheck(computer_moved))
+	{
+		if (!BlockPlayerWinConditions())
+		{
+			if (!(MoveComputerTowardsWin()) )
+			{
+				if (!BlockPlayerWinConditions())
+				{
+					// Block Player Win
+					if (!(MoveComputerTowardsWin()) )
+					{
+						MakeRandomMove();
+					}
+				}
+			}
+		}
+	}
+	
+	if (DidAnyoneWin(COMPUTER_VAL))
+	{
+		setTimeout(function() {
+			alert("You lost!");
+			}, 500);		
+		return;
+	}
+
+}
+
+function MoveComputerTowardsWin()
+{
+   
+  console.log("entering MoveComputerTowardsWin");
+  computer_moved = true;
+  elementName="";
+ 
+   if(sqr1 == COMPUTER_VAL && sqr2 == COMPUTER_VAL && sqr3T == 0 && sqr4T == 0 && turn == 1)
+  {
+    elementName="sqr3";
+    sqr3T = 1;
+  }
+  
+  else if(sqr3 == COMPUTER_VAL && sqr4 == COMPUTER_VAL && sqr2T == 0 && sqr1T == 0 && turn == 1)
+  {
+    elementName="sqr1";
+    sqr1T = 1;
+  }
+  
+  else if(sqr2 == COMPUTER_VAL && sqr3 == COMPUTER_VAL && sqr4T == 0 && sqr1T == 0 && turn == 1)
+  {
+    elementName="sqr1";
+    sqr1T = 1;
+  }
+  
+  else if(sqr1 == COMPUTER_VAL && sqr4 == COMPUTER_VAL && sqr3T == 0 && sqr2T == 0 && turn == 1)
+  {
+    elementName="sqr2";
+    sqr2T = 1;
+  }
+  
+  else if(sqr2 == COMPUTER_VAL && sqr3 == COMPUTER_VAL && sqr4T == 0 && sqr1T == 0 && turn == 1)
+  {
+    elementName="sqr1";
+    sqr1T = 1;
+  }
+   
+  else if(sqr5 == COMPUTER_VAL && sqr6 == COMPUTER_VAL && sqr8T == 0 && sqr7T == 0 && turn == 1)
+  {
+    elementName="sqr7";
+    sqr7T = 1;
+  }
+  
+  else if(sqr9 == COMPUTER_VAL && sqr10 == COMPUTER_VAL && sqr12T == 0 && sqr11T == 0 && turn == 1)
+  {
+    elementName="sqr11";
+    sqr11T = 1;
+  }
+ 
+  else if(sqr13 == COMPUTER_VAL && sqr14 == COMPUTER_VAL && sqr16T == 0 && sqr15T == 0 && turn == 1)
+  {
+    elementName="sqr15";
+    sqr15T = 1;
+  }
+  
+  else if(sqr4 == COMPUTER_VAL && sqr8 == COMPUTER_VAL && sqr16T == 0 && sqr12T == 0 && turn == 1)
+  {
+    elementName="sqr12";
+    sqr12T = 1;
+  }
+  else if(sqr3 == COMPUTER_VAL && sqr7 == COMPUTER_VAL && sqr15T == 0 && sqr11T == 0 && turn == 1)
+  {
+    elementName="sqr11";
+    sqr11T = 1;
+  }
+  else if(sqr2 == COMPUTER_VAL && sqr6 == COMPUTER_VAL && sqr14T == 0 && sqr10T == 0 && turn == 1)
+  {
+    elementName="sqr10";
+    sqr10T = 1;
+  }
+  
+  else if(sqr1 == COMPUTER_VAL && sqr5 == COMPUTER_VAL && sqr13T == 0 && sqr9T == 0 && turn == 1)
+  {
+    elementName="sqr9";
+    sqr9T = 1;
+  }
+  else if(sqr1 == COMPUTER_VAL && sqr6 == COMPUTER_VAL && sqr16T == 0 && sqr11T == 0 && turn == 1)
+  {
+    elementName="sqr11";
+    sqr11T = 1;
+  }
+  else if(sqr4 == COMPUTER_VAL && sqr7== COMPUTER_VAL && sqr13T == 0 && sqr10T == 0 && turn == 1)
+  {
+    elementName="sqr10";
+    sqr10T = 1;
+  }
+ 
+  else
+  {
+	computer_moved = false;
+  }
+  
+
+  if (computer_moved)
+  {
+	document.getElementById(elementName).value = COMPUTER_VAL;
+	document.getElementById(elementName).disabled = true;
+	turn = 0;
+	AssignValuesToVariables();
+  }
+  
+  return computer_moved;
+
+}
+
+function BlockPlayerWinConditions()
+{
+  console.log("entering BlockPlayerWinConditions");
+  computer_moved = true;
+  elementName="";
+	
+  if(sqr1 == PLAYER_VAL && sqr2 == PLAYER_VAL && sqr3 == PLAYER_VAL && sqr4T == 0 && turn == 1)
+  {
+    //document.tic.sqr4.value = COMPUTER_VAL;
+	elementName="sqr4";
+    sqr4T = 1;
+  }
+  else if(sqr2 == PLAYER_VAL && sqr3 == PLAYER_VAL && sqr4 == PLAYER_VAL && sqr1T == 0 && turn == 1)
+  {
+    //document.tic.sqr1.value = COMPUTER_VAL;
+	elementName="sqr1";
+    sqr1T = 1;
+  }
+  else if(sqr1 == PLAYER_VAL && sqr2 == PLAYER_VAL && sqr4 == PLAYER_VAL && sqr3T == 0 && turn == 1)
+  {
+    //document.tic.sqr1.value = COMPUTER_VAL;
+	elementName="sqr3";
+    sqr3T = 1;
+  }
+  else if(sqr3 == PLAYER_VAL && sqr4 == PLAYER_VAL && sqr1 == PLAYER_VAL && sqr2T == 0 && turn == 1)
+  {
+    //document.tic.sqr2.value = COMPUTER_VAL;
+	elementName="sqr2";
+    sqr2T = 1;
+  }
+  else if(sqr5 == PLAYER_VAL && sqr6 == PLAYER_VAL && sqr7 == PLAYER_VAL && sqr8T == 0 && turn == 1)
+  {
+    //document.tic.sqr8.value = COMPUTER_VAL;
+	elementName="sqr8";
+    sqr8T = 1;
+  }
+  else if(sqr5 == PLAYER_VAL && sqr6 == PLAYER_VAL && sqr8 == PLAYER_VAL && sqr7T == 0 && turn == 1)
+  {
+    //document.tic.sqr7.value = COMPUTER_VAL;
+	elementName="sqr7";
+    sqr7T = 1;
+  }
+  else if(sqr5 == PLAYER_VAL && sqr7 == PLAYER_VAL && sqr8 == PLAYER_VAL && sqr6T == 0 && turn == 1)
+  {
+    //document.tic.sqr6.value = COMPUTER_VAL;
+	elementName="sqr6";
+    sqr6T = 1;
+  }
+  else if(sqr6 == PLAYER_VAL && sqr7 == PLAYER_VAL && sqr8 == PLAYER_VAL && sqr5T == 0 && turn == 1)
+  {
+    //document.tic.sqr5.value = COMPUTER_VAL;
+	elementName="sqr5";
+    sqr5T = 1;
+  }
+  else if(sqr9== PLAYER_VAL && sqr10 == PLAYER_VAL && sqr11== PLAYER_VAL && sqr12T == 0 && turn == 1)
+  {
+    //document.tic.sqr12.value = COMPUTER_VAL;
+	elementName="sqr12";
+    sqr12T = 1;
+  }
+  else if(sqr9 == PLAYER_VAL && sqr10 == PLAYER_VAL && sqr12 == PLAYER_VAL && sqr11T == 0 && turn == 1)
+  {
+    //document.tic.sqr11.value = COMPUTER_VAL;
+	elementName="sqr11";
+    sqr11T = 1;
+  }
+  else if(sqr9 == PLAYER_VAL && sqr11 == PLAYER_VAL && sqr12 == PLAYER_VAL && sqr10T == 0 && turn == 1)
+  {
+    //document.tic.sqr10.value = COMPUTER_VAL;
+	elementName="sqr10";
+    sqr10T = 1;
+  }
+  else if(sqr10 == PLAYER_VAL && sqr11 == PLAYER_VAL && sqr12 == PLAYER_VAL && sqr9T == 0 && turn == 1)
+  {
+    ///document.tic.sqr9.value = COMPUTER_VAL;
+	elementName="sqr9";
+    sqr9T = 1;
+  }
+  else if(sqr13 == PLAYER_VAL && sqr14 == PLAYER_VAL && sqr15 == PLAYER_VAL && sqr16T == 0 && turn == 1)
+  {
+    //document.tic.sqr16.value = COMPUTER_VAL;
+	elementName="sqr16";
+    sqr16T = 1;
+  }
+  else if(sqr13 == PLAYER_VAL && sqr14 == PLAYER_VAL && sqr16 == PLAYER_VAL && sqr15T == 0 && turn == 1)
+  {
+    //document.tic.sqr15.value = COMPUTER_VAL;
+	elementName="sqr15";
+    sqr15T = 1;
+  }
+  else if(sqr13 == PLAYER_VAL && sqr15 == PLAYER_VAL && sqr16 == PLAYER_VAL && sqr14T == 0 && turn == 1)
+  {
+    //document.tic.sqr14.value = COMPUTER_VAL;
+	elementName="sqr14";
+    sqr14T = 1;
+  }
+  else if(sqr14 == PLAYER_VAL && sqr15 == PLAYER_VAL && sqr16 == PLAYER_VAL && sqr13T == 0 && turn == 1)
+  {
+    //document.tic.sqr13.value = COMPUTER_VAL;
+	elementName="sqr13";
+    sqr13T = 1;
+  }
+  else if(sqr1 == PLAYER_VAL && sqr6 == PLAYER_VAL && sqr11 == PLAYER_VAL && sqr16T == 0 && turn == 1)
+  {
+    //document.tic.sqr16.value = COMPUTER_VAL;
+	elementName="sqr16";
+    sqr16T = 1;
+  }
+  else if(sqr1 == PLAYER_VAL && sqr6 == PLAYER_VAL && sqr16 == PLAYER_VAL && sqr11T == 0 && turn == 1)
+  {
+    //document.tic.sqr11.value = COMPUTER_VAL;
+	elementName="sqr11";
+    sqr11T = 1;
+  }
+  else if(sqr1 == PLAYER_VAL && sqr16 == PLAYER_VAL && sqr11 == PLAYER_VAL && sqr6T == 0 && turn == 1)
+  {
+    //document.tic.sqr6.value = COMPUTER_VAL;
+	elementName="sqr6";
+    sqr6T = 1;
+  }
+  else if(sqr16 == PLAYER_VAL && sqr6 == PLAYER_VAL && sqr11 == PLAYER_VAL && sqr1T == 0 && turn == 1)
+  {
+    //document.tic.sqr1.value = COMPUTER_VAL;
+	elementName="sqr1";
+    sqr1T = 1;
+  }
+  else if(sqr4 == PLAYER_VAL && sqr7 == PLAYER_VAL && sqr10 == PLAYER_VAL && sqr13T == 0 && turn == 1)
+  {
+    //document.tic.sqr13.value = COMPUTER_VAL;
+	elementName="sqr13";
+    sqr13T = 1;
+  }
+  else if(sqr7 == PLAYER_VAL && sqr10 == PLAYER_VAL && sqr13 == PLAYER_VAL && sqr4T == 0 && turn == 1)
+  {
+    //document.tic.sqr4.value = COMPUTER_VAL;
+	elementName="sqr4";
+    sqr4T = 1;
+  }
+  else if(sqr10 == PLAYER_VAL && sqr13 == PLAYER_VAL && sqr4 == PLAYER_VAL && sqr7T == 0 && turn == 1)
+  {
+    //document.tic.sqr7.value = COMPUTER_VAL;
+	elementName="sqr7";
+    sqr7T = 1;
+  }
+  else if(sqr7 == PLAYER_VAL && sqr13 == PLAYER_VAL && sqr4 == PLAYER_VAL && sqr10T == 0 && turn == 1)
+  {
+    //document.tic.sqr10.value = COMPUTER_VAL
+	elementName="sqr10";
+    sqr10T = 1;
+  }
+  else if(sqr1 == PLAYER_VAL && sqr5 == PLAYER_VAL && sqr9 == PLAYER_VAL && sqr13T == 0 && turn == 1)
+  {
+    //document.tic.sqr13.value = COMPUTER_VAL;
+	elementName="sqr13";
+    sqr13T = 1;
+  }
+  else if(sqr5 == PLAYER_VAL && sqr9 == PLAYER_VAL && sqr13 == PLAYER_VAL && sqr1T == 0 && turn == 1)
+  {
+    //document.tic.sqr1.value = COMPUTER_VAL;
+	elementName="sqr1";
+    sqr1T = 1;
+  }
+  else if(sqr9 == PLAYER_VAL && sqr13 == PLAYER_VAL && sqr1 == PLAYER_VAL && sqr5T == 0 && turn == 1)
+  {
+    //document.tic.sqr5.value = COMPUTER_VAL;
+	elementName="sqr5";
+    sqr5T = 1;
+  }
+  else if(sqr13 == PLAYER_VAL && sqr1 == PLAYER_VAL && sqr5 == PLAYER_VAL && sqr9T == 0 && turn == 1)
+  {
+    //document.tic.sqr9.value = COMPUTER_VAL;
+	elementName="sqr9";
+    sqr9T = 1;
+  }
+  else if(sqr2 == PLAYER_VAL && sqr6== PLAYER_VAL && sqr10 == PLAYER_VAL && sqr14T == 0 && turn == 1)
+  {
+    //document.tic.sqr14.value = COMPUTER_VAL;
+	elementName="sqr14";
+    sqr14T = 1;
+  }
+  else if(sqr6 == PLAYER_VAL && sqr10== PLAYER_VAL && sqr14 == PLAYER_VAL && sqr2T == 0 && turn == 1)
+  {
+    //document.tic.sqr2.value = COMPUTER_VAL;
+	elementName="sqr2";
+    sqr2T = 1;
+  }
+  else if(sqr10 == PLAYER_VAL && sqr14== PLAYER_VAL && sqr2 == PLAYER_VAL && sqr6T == 0 && turn == 1)
+  {
+    //document.tic.sqr6.value = COMPUTER_VAL
+	elementName="sqr6";
+    sqr6T = 1;
+  }
+  else if(sqr14 == PLAYER_VAL && sqr2== PLAYER_VAL && sqr6 == PLAYER_VAL && sqr10T == 0 && turn == 1)
+  {
+    //document.tic.sqr10.value = COMPUTER_VAL;
+	elementName="sqr10";
+    sqr10T = 1;
+  }
+  else if(sqr3 == PLAYER_VAL && sqr7== PLAYER_VAL && sqr11== PLAYER_VAL && sqr15T == 0 && turn == 1)
+  {
+    //document.tic.sqr15.value = COMPUTER_VAL;
+	elementName="sqr15";
+    sqr15T = 1;
+  }
+  else if(sqr7 == PLAYER_VAL && sqr11== PLAYER_VAL && sqr15== PLAYER_VAL && sqr3T == 0 && turn == 1)
+  {
+    //document.tic.sqr3.value = COMPUTER_VAL;
+	elementName="sqr3";
+    sqr3T = 1;
+  }
+  else if(sqr11 == PLAYER_VAL && sqr15== PLAYER_VAL && sqr3== PLAYER_VAL && sqr7T == 0 && turn == 1)
+  {
+    //document.tic.sqr7.value = COMPUTER_VAL;
+	elementName="sqr7";
+    sqr7T = 1;
+  }
+  else if(sqr15 == PLAYER_VAL && sqr3== PLAYER_VAL && sqr7== PLAYER_VAL && sqr11T == 0 && turn == 1)
+  {
+    //document.tic.sqr11.value = COMPUTER_VAL;
+	elementName="sqr11";
+    sqr11T = 1;
+  }
+  else if(sqr4 == PLAYER_VAL && sqr8== PLAYER_VAL && sqr12== PLAYER_VAL && sqr16T == 0 && turn == 1)
+  {
+    //document.tic.sqr16.value = COMPUTER_VAL;
+	elementName="sqr16";
+    sqr16T = 1;
+  } 
+  else if(sqr8 == PLAYER_VAL && sqr12== PLAYER_VAL && sqr16== PLAYER_VAL && sqr4T == 0 && turn == 1)
+  {
+    //document.tic.sqr4.value = COMPUTER_VAL;
+	elementName="sqr4";
+    sqr4T = 1;
+  }
+  else if(sqr12 == PLAYER_VAL && sqr16== PLAYER_VAL && sqr4== PLAYER_VAL && sqr8T == 0 && turn == 1)
+  {
+    //document.tic.sqr8.value = COMPUTER_VAL;
+	elementName="sqr8";
+    sqr8T = 1;
+  }
+  else if(sqr16 == PLAYER_VAL && sqr4== PLAYER_VAL && sqr8== PLAYER_VAL && sqr12T == 0 && turn == 1)
+  {
+    //document.tic.sqr12.value = COMPUTER_VAL;
+	elementName="sqr12";
+    sqr12T = 1;
+  }
+  else
+  {
+    computer_moved = false;
+  }
+  
+  if (computer_moved)
+  {
+	document.getElementById(elementName).value = COMPUTER_VAL;
+	document.getElementById(elementName).disabled = true;
+	turn = 0;
+	AssignValuesToVariables();
+  }
+  //PlayerLoseCheck();
+  return computer_moved;
+}
+
+function MakeRandomMove()
+{
+  computer_moved = true;
+  elementName = "";
+   AssignValuesToVariables();
+  console.log("entering MakeRandomMove");
+  if(document.tic.sqr5.value == BLANK_VAL && turn == 1)
+  {
+    elementName="sqr5";
+    sqr5T = 1;
+  }
+  else if(document.tic.sqr1.value == BLANK_VAL && turn == 1)
+  {
+    elementName="sqr1";
+    sqr1T = 1;
+  }
+  else if(document.tic.sqr9.value == BLANK_VAL && turn == 1)
+  {
+    elementName="sqr9";
+    sqr9T = 1;
+  }
+  else if(document.tic.sqr6.value == BLANK_VAL && turn == 1)
+  {
+    elementName="sqr6";
+    sqr6T = 1;
+  }
+  else if(document.tic.sqr2.value == BLANK_VAL && turn == 1)
+  {
+   	elementName="sqr2";
+    sqr2T = 1;
+  }
+  else if(document.tic.sqr8.value == BLANK_VAL && turn == 1)
+  {
+    elementName="sqr8";
+    sqr8T = 1;
+  }
+  else if(document.tic.sqr3.value == BLANK_VAL && turn == 1)
+  {
+    elementName="sqr3";
+    sqr3T = 1;
+  }
+  else if(document.tic.sqr7.value == BLANK_VAL && turn == 1)
+  {
+   	elementName="sqr7";
+    sqr7T = 1;
+  }
+  else if(document.tic.sqr4.value == BLANK_VAL && turn == 1)
+  {
+   	elementName="sqr4";
+    sqr4T = 1;
+  }
+  else if(document.tic.sqr10.value == BLANK_VAL && turn == 1)
+  {
+  	elementName="sqr10";
+    sqr10T = 1;
+  }
+  else if(document.tic.sqr11.value == BLANK_VAL && turn == 1)
+  {
+  	elementName="sqr11";
+    sqr11T = 1;
+  }
+  else if(document.tic.sqr12.value == BLANK_VAL && turn == 1)
+  {
+    elementName="sqr12";
+    sqr12T = 1;
+  }
+  else if(document.tic.sqr13.value == BLANK_VAL && turn == 1)
+  {
+  	elementName="sqr13";
+    sqr13T = 1;
+  }
+  else if(document.tic.sqr14.value == BLANK_VAL && turn == 1)
+  {
+   	elementName="sqr14";
+    sqr14T = 1;
+  }
+  else if(document.tic.sqr15.value == BLANK_VAL && turn == 1)
+  {
+   	elementName="sqr15";
+    sqr15T = 1;
+  }
+  else if(document.tic.sqr16.value == BLANK_VAL && turn == 1)
+  {
+  	elementName="sqr16";
+    sqr16T = 1;
+  } else {
+	// this should not happen ... :(
+	alert('aiyoohh!');
+	computer_moved = false;
+  }
+  
+  if (computer_moved)
+  {
+	document.getElementById(elementName).value = COMPUTER_VAL;
+	document.getElementById(elementName).disabled = true;
+	turn = 0;  
+	AssignValuesToVariables();
+  }
+  
+  return computer_moved;
+}
+
+function fnReset()
+{
+  document.tic.sqr1.value = BLANK_VAL;
+  document.tic.sqr2.value = BLANK_VAL;
+  document.tic.sqr3.value = BLANK_VAL;
+  document.tic.sqr4.value = BLANK_VAL;
+  document.tic.sqr5.value = BLANK_VAL;
+  document.tic.sqr6.value = BLANK_VAL;
+  document.tic.sqr7.value = BLANK_VAL;
+  document.tic.sqr8.value = BLANK_VAL;
+  document.tic.sqr9.value = BLANK_VAL;
+  document.tic.sqr10.value = BLANK_VAL;
+  document.tic.sqr11.value = BLANK_VAL;
+  document.tic.sqr12.value = BLANK_VAL;
+  document.tic.sqr13.value = BLANK_VAL;
+  document.tic.sqr14.value = BLANK_VAL;
+  document.tic.sqr15.value = BLANK_VAL;
+  document.tic.sqr16.value = BLANK_VAL;
+
+  document.tic.sqr1.disabled = false;
+  document.tic.sqr2.disabled = false;
+  document.tic.sqr3.disabled = false;
+  document.tic.sqr4.disabled = false;
+  document.tic.sqr5.disabled = false;
+  document.tic.sqr6.disabled = false;
+  document.tic.sqr7.disabled = false;
+  document.tic.sqr8.disabled = false;
+  document.tic.sqr9.disabled = false;
+  document.tic.sqr10.disabled = false;
+  document.tic.sqr11.disabled = false;
+  document.tic.sqr12.disabled = false;
+  document.tic.sqr13.disabled = false;
+  document.tic.sqr14.disabled = false;
+  document.tic.sqr15.disabled = false;
+  document.tic.sqr16.disabled = false;
+
+	document.getElementById("sqr1").style.background ="";
+	document.getElementById("sqr2").style.background ="";
+	document.getElementById("sqr3").style.background ="";
+	document.getElementById("sqr4").style.background ="";
+	document.getElementById("sqr5").style.background ="";
+	document.getElementById("sqr6").style.background ="";
+	document.getElementById("sqr7").style.background ="";
+	document.getElementById("sqr8").style.background ="";
+	document.getElementById("sqr9").style.background ="";
+	document.getElementById("sqr10").style.background="";
+	document.getElementById("sqr11").style.background="";
+	document.getElementById("sqr12").style.background="";
+	document.getElementById("sqr13").style.background="";
+	document.getElementById("sqr14").style.background="";
+	document.getElementById("sqr15").style.background="";
+	document.getElementById("sqr16").style.background="";
+  
+  sqr1T = 0;
+  sqr2T = 0;
+  sqr3T = 0;
+  sqr4T = 0;
+  sqr5T = 0;
+  sqr6T = 0;
+  sqr7T = 0;
+  sqr8T = 0;
+  sqr9T = 0;
+  sqr10T = 0;
+  sqr11T = 0;
+  sqr12T = 0;
+  sqr13T = 0;
+  sqr14T = 0;
+  sqr15T = 0;
+  sqr16T = 0;
+  AssignValuesToVariables();
+  turn = 0;
+  moveCount = 0;
+  p_movecount =0;
+  gameOver = false;
+}
+
+</SCRIPT>
+</head>
+<body>
+
+<FORM NAME="tic" method="post">
+<INPUT TYPE="button" NAME="reset"  id="reset"    value="RESET" onClick="fnReset()"> <br>
+<INPUT TYPE="button" NAME="sqr1"  id="sqr1"    class="tictac" value="     " onClick="OnClickCheck(this)">
+<INPUT TYPE="button" NAME="sqr2"  id="sqr2"    class="tictac" value="     " onClick="OnClickCheck(this)">
+<INPUT TYPE="button" NAME="sqr3"  id="sqr3"    class="tictac" value="     " onClick="OnClickCheck(this)">
+<INPUT TYPE="button" NAME="sqr4"  id="sqr4"    class="tictac" value="     " onClick="OnClickCheck(this)"><br />
+<INPUT TYPE="button" NAME="sqr5"  id="sqr5"    class="tictac" value="     " onClick="OnClickCheck(this)">
+<INPUT TYPE="button" NAME="sqr6"  id="sqr6"    class="tictac" value="     " onClick="OnClickCheck(this)">
+<INPUT TYPE="button" NAME="sqr7"  id="sqr7"    class="tictac" value="     " onClick="OnClickCheck(this)">
+<INPUT TYPE="button" NAME="sqr8"  id="sqr8"    class="tictac" value="     " onClick="OnClickCheck(this)"><br />
+<INPUT TYPE="button" NAME="sqr9"  id="sqr9"    class="tictac" value="     " onClick="OnClickCheck(this)">
+<INPUT TYPE="button" NAME="sqr10" id="sqr10"   class="tictac" value="     " onClick="OnClickCheck(this)">
+<INPUT TYPE="button" NAME="sqr11" id="sqr11"   class="tictac" value="     " onClick="OnClickCheck(this)">
+<INPUT TYPE="button" NAME="sqr12" id="sqr12"   class="tictac" value="     " onClick="OnClickCheck(this)"><br />
+<INPUT TYPE="button" NAME="sqr13" id="sqr13"   class="tictac" value="     " onClick="OnClickCheck(this)">
+<INPUT TYPE="button" NAME="sqr14" id="sqr14"   class="tictac" value="     " onClick="OnClickCheck(this)">
+<INPUT TYPE="button" NAME="sqr15" id="sqr15"   class="tictac" value="     " onClick="OnClickCheck(this)">
+<INPUT TYPE="button" NAME="sqr16" id="sqr16"   class="tictac" value="     " onClick="OnClickCheck(this)">
+
+</form>
+
+</body>
+</html>
